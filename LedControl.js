@@ -10,10 +10,10 @@ const LedControl = () => {
   });
 
   useEffect(() => {
-    const client = mqtt.connect('mqtt://your-mqtt-broker-url');
+    const client = mqtt.connect('broker.emqx.io');
 
     client.on('connect', () => {
-      client.subscribe('your-mqtt-topic');
+      client.subscribe('Wakar');
     });
 
     client.on('message', (topic, message) => {
@@ -39,8 +39,8 @@ const LedControl = () => {
     setLedStates(newState);
 
     // Publish the updated state to MQTT
-    const client = mqtt.connect('mqtt://your-mqtt-broker-url');
-    client.publish('your-mqtt-topic', JSON.stringify({ data: newState }));
+    const client = mqtt.connect('broker.emqx.io');
+    client.publish('Wakar', JSON.stringify({ data: newState }));
     client.end();
   };
 
